@@ -56,7 +56,7 @@ public class Deck
      */
     public int size()
     {
-        return size();
+        return size;
     } // size()
 
     /**
