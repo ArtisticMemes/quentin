@@ -1,5 +1,7 @@
 package table_games;
 
+import java.util.Arrays;
+
 public class Shuffler
 {
     public static final int DEFAULT_RANDOM_MIN = 0;
@@ -11,7 +13,7 @@ public class Shuffler
         sort(a);
         sort(b);
 
-        return a.equals(b);
+        return Arrays.equals(a, b);
     } // arePermutations()
 
     // Mixes int array
