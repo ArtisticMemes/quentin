@@ -68,7 +68,17 @@ public class Deck
      */
     public void shuffle()
     {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+        int[] tmp = new int[cards.size()];
+        for(int i = 0; i < cards.size(); i++)
+            tmp[i] = i;
+        Shuffler.selectionShuffle(tmp);
+        Card[] shuffledDeck = new Card[cards.size()];
+        for(int i = 0; i < cards.size(); i++)
+            shuffledDeck[tmp[i]] = cards.get(i);
+        cards.clear();
+        for(int i = 0; i < shuffledDeck.length; i++)
+            cards.add(shuffledDeck[i]);
+        size = cards.size();
     } // shuffle()
 
     /**
