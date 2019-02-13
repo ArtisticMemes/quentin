@@ -1,5 +1,7 @@
 package table_games.test;
 
+import java.util.Arrays;
+
 import table_games.Shuffler;
 
 public class ShufflerTester
@@ -18,7 +20,7 @@ public class ShufflerTester
 
         // Testing shuffling
         int[] b = {
-                1, 2, 3, 4, 5, 6
+                2, 3, 4, 1
         };
         System.out.println("Shuffle 1 ---- \n");
         Shuffler.selectionShuffle(b);
@@ -26,6 +28,23 @@ public class ShufflerTester
             System.out.println(integer);
         System.out.println("Shuffle 2 ---- \n");
         Shuffler.selectionShuffle(b);
+        for(int integer : b)
+            System.out.println(integer);
+
+        // Target sequence
+        int[] c = new int[]{
+                4, 3, 2, 1
+        };
+        int i = 0;
+        while(i < 400 && !Arrays.equals(b, c)) // max of 400 randomizations
+        {
+            i++;
+            System.out.print("\n" + i + " --> ");
+            Shuffler.selectionShuffle(b);
+            for(int integer : b)
+                System.out.print(integer);
+        }
+        System.out.println("\nShuffle Until Desired Output ---- \n");
         for(int integer : b)
             System.out.println(integer);
     } // main()
