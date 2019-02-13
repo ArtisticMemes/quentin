@@ -14,6 +14,18 @@ public class Shuffler
         return a.equals(b);
     } // arePermutations()
 
+    // Randomize int array
+    public static void selectionShuffle(int[] array)
+    {
+        for(int i = 0; i < array.length; i++)
+        {
+            int r = random(0, array.length - 1);
+            int tmp = array[i];
+            array[i] = array[r];
+            array[r] = tmp;
+        }
+    } // selectionShuffle()
+
     // Selection sort for an int array
     public static void sort(int[] array)
     {
