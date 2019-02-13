@@ -7,30 +7,63 @@ import table_games.Deck;
  */
 public class DeckTester
 {
+    /**
+     * The main method in this class checks the Deck operations for consistency.
+     * 
+     * @param args is not used.
+     */
     public static void main(String[] args)
     {
-        // variables
         String[] ranks = {
-                "yike", "oof", "darn"
+                "jack", "queen", "king"
         };
-        String[] suit = {
-                "hart", "dimon", "clud", "shovel"
+        String[] suits = {
+                "blue", "red"
         };
-        int[] values = {
-                1, 2, 3
+        int[] pointValues = {
+                11, 12, 13
         };
+        Deck d = new Deck(ranks, suits, pointValues);
 
-        // creating the deck
-        Deck deck = new Deck(ranks, suit, values);
+        System.out.println("**** Original Deck Methods ****");
+        System.out.println("  toString:\n" + d.toString());
+        System.out.println("  isEmpty: " + d.isEmpty());
+        System.out.println("  size: " + d.size());
+        System.out.println();
+        System.out.println();
 
-        // the testing part
-        System.out.println("the deck  \n" + deck);
-        System.out.println("size of the deck " + deck.size());
-        deck.deal();
-        System.out.println("size of the deck afer one \"deal\" " + deck.size());
-        deck.deal();
-        deck.deal();
+        System.out.println("**** Deal a Card ****");
+        System.out.println("  deal: " + d.deal());
+        System.out.println();
+        System.out.println();
 
-        System.out.println("\n\nthe deck after dealing  \n" + deck);
+        System.out.println("**** Deck Methods After 1 Card Dealt ****");
+        System.out.println("  toString:\n" + d.toString());
+        System.out.println("  isEmpty: " + d.isEmpty());
+        System.out.println("  size: " + d.size());
+        System.out.println();
+        System.out.println();
+
+        System.out.println("**** Deal Remaining 5 Cards ****");
+        for(int i = 0; i < 5; i++)
+        {
+            System.out.println("  deal: " + d.deal());
+        }
+        System.out.println();
+        System.out.println();
+
+        System.out.println("**** Deck Methods After All Cards Dealt ****");
+        System.out.println("  toString:\n" + d.toString());
+        System.out.println("  isEmpty: " + d.isEmpty());
+        System.out.println("  size: " + d.size());
+        System.out.println();
+        System.out.println();
+
+        System.out.println("**** Deal a Card From Empty Deck ****");
+        System.out.println("  deal: " + d.deal());
+        System.out.println();
+        System.out.println();
+
+        /* *** TO BE COMPLETED IN ACTIVITY 4 *** */
     } // main()
 } // DeckTester
