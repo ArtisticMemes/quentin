@@ -14,6 +14,21 @@ public class Shuffler
         return a.equals(b);
     } // arePermutations()
 
+    // Mixes int array
+    public static void perfectShuffle(int[] array)
+    {
+        // ArrayIndexOutOfBounds exception avoidance
+        if(array.length == 0)
+            return;
+
+        int end = array[array.length - 1];
+        for(int i = 0; i < array.length - 1; i++)
+        {
+            array[i] = array[i + 1];
+        }
+        array[0] = end;
+    } // perfectShuffle()
+
     // Randomize int array
     public static void selectionShuffle(int[] array)
     {
