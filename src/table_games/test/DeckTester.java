@@ -64,6 +64,17 @@ public class DeckTester
         System.out.println();
         System.out.println();
 
-        /* *** TO BE COMPLETED IN ACTIVITY 4 *** */
+        ranks = new String[]{
+                "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king",
+                "ace"
+        };
+        suits = new String[]{
+                "hearts", "diamonds", "clubs", "spades"
+        };
+        pointValues = new int[]{
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11
+        };
+        Deck deck2 = new Deck(ranks, suits, pointValues);
+        System.out.println(deck2);
     } // main()
 } // DeckTester
