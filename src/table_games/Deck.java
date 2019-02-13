@@ -33,8 +33,11 @@ public class Deck
     public Deck(String[] ranks, String[] suits, int[] values)
     {
         cards = new ArrayList<Card>(ranks.length);
-        for(int i = 0; i < ranks.length; i++)
-            cards.add(new Card(ranks[i], suits[i], values[i]));
+        for(int a = 0; a < suits.length; a++)
+        {
+            for(int b = 0; b < ranks.length; b++)
+                cards.add(new Card(ranks[b], suits[a], values[b]));
+        }
         size = cards.size();
         shuffle();
     } // Deck()
@@ -96,30 +99,16 @@ public class Deck
         for(int k = size - 1; k >= 0; k--)
         {
             output = output + cards.get(k);
-            if(k != 0)
-            {
-                output = output + ", ";
-            }
-            if((size - k) % 2 == 0)
-            {
-                // Insert carriage returns so entire deck is visible on console.
-                output = output + "\n";
-            }
+            // Insert carriage returns so entire deck is visible on console.
+            output = output + "\n";
         }
 
         output = output + "\nDealt cards: \n";
         for(int k = cards.size() - 1; k >= size; k--)
         {
             output = output + cards.get(k);
-            if(k != size)
-            {
-                output = output + ", ";
-            }
-            if((k - cards.size()) % 2 == 0)
-            {
-                // Insert carriage returns so entire deck is visible on console.
-                output = output + "\n";
-            }
+            // Insert carriage returns so entire deck is visible on console.
+            output = output + "\n";
         }
 
         output = output + "\n";
