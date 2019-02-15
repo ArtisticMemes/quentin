@@ -91,7 +91,7 @@ public class Shuffler
     {
         for(int i = 0; i < array.length; i++)
         {
-            int r = random(0, array.length - 1);
+            int r = random(array.length - 1);
             int tmp = array[i];
             array[i] = array[r];
             array[r] = tmp;
