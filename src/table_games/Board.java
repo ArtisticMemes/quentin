@@ -124,8 +124,10 @@ public abstract class Board
     {
         for(Integer k : selectedCards)
         {
+            System.out.println("Picked Index --> " + k);
             deal(k.intValue());
         }
+        System.out.println();
     } // replaceSelectedCards()
 
     /**
@@ -158,7 +160,10 @@ public abstract class Board
         String s = "";
         for(int k = 0; k < cards.length; k++)
         {
-            s = s + k + ": " + cards[k] + "\n";
+            if(k == cards.length - 1)
+                s = s + k + ": " + cards[k];
+            else
+                s = s + k + ": " + cards[k] + "\n";
         }
         return s;
     } // toString()
