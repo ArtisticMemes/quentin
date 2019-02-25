@@ -65,7 +65,11 @@ public class ElevensBoard extends Board
     @Override
     public boolean isLegal(List<Integer> selectedCards)
     {
-        return containsPairSum11(selectedCards) || containsJQK(selectedCards);
+        ArrayList<Integer> values = new ArrayList<Integer>();
+        // Convert from indices to point values
+        for(int i = 0; i < selectedCards.size(); i++)
+            values.add(cardAt(selectedCards.get(i)).pointValue());
+        return containsPairSum11(values) || containsJQK(values);
     } // isLegal()
 
     /**
@@ -99,16 +103,16 @@ public class ElevensBoard extends Board
     /**
      * Check for an 11-pair in the selected cards.
      * 
-     * @param selectedCards selects a subset of this board. It is list of indexes
-     *        into this board that are searched to find an 11-pair.
+     * @param values selects a subset of this board. It is list of indexes into this
+     *        board that are searched to find an 11-pair.
      * @return true if the board entries in selectedCards contain an 11-pair; false
      *         otherwise.
      */
-    private boolean containsPairSum11(List<Integer> selectedCards)
+    private boolean containsPairSum11(List<Integer> values)
     {
-        if(selectedCards.size() == 2)
+        if(values.size() == 2)
         {
-            return selectedCards.get(0) + selectedCards.get(1) == 11;
+            return values.get(0) + values.get(1) == 11;
         }
         else
             return false;
@@ -117,17 +121,17 @@ public class ElevensBoard extends Board
     /**
      * Check for a JQK in the selected cards.
      * 
-     * @param selectedCards selects a subset of this board. It is list of indexes
-     *        into this board that are searched to find a JQK group.
+     * @param values selects a subset of this board. It is list of indexes into this
+     *        board that are searched to find a JQK group.
      * @return true if the board entries in selectedCards include a jack, a queen,
      *         and a king; false otherwise.
      */
-    private boolean containsJQK(List<Integer> selectedCards)
+    private boolean containsJQK(List<Integer> values)
     {
         boolean j = false;
         boolean q = false;
         boolean k = false;
-        for(Integer value : selectedCards)
+        for(Integer value : values)
         {
             if(value == 11)
                 j = true;
