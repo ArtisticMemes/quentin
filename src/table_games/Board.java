@@ -124,10 +124,12 @@ public abstract class Board
     {
         for(Integer k : selectedCards)
         {
-            System.out.println("Picked Index --> " + k);
+            if(ElevensSimulation.DEBUG)
+                System.out.println("Picked Index --> " + k);
             deal(k.intValue());
         }
-        System.out.println();
+        if(ElevensSimulation.DEBUG)
+            System.out.println();
     } // replaceSelectedCards()
 
     /**
@@ -157,7 +159,7 @@ public abstract class Board
     @Override
     public String toString()
     {
-        String s = "";
+        String s = "Deck size : " + deckSize() + "\n";
         for(int k = 0; k < cards.length; k++)
         {
             if(k == cards.length - 1)
@@ -187,7 +189,8 @@ public abstract class Board
             }
             return true;
         }
-        return false;
+        else
+            return false;
     } // gameIsWon()
 
     /**

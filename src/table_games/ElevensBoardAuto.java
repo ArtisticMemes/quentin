@@ -60,16 +60,19 @@ public class ElevensBoardAuto extends Board
             {
                 for(int b = 0; b < BOARD_SIZE; b++)
                 {
-                    List<Integer> cards = new ArrayList<Integer>();
-                    List<Integer> check = new ArrayList<Integer>();
-                    check.add(cardAt(a).pointValue());
-                    cards.add(a);
-                    check.add(cardAt(b).pointValue());
-                    cards.add(b);
-                    if(containsPairSum11(check))
+                    if(cardAt(a) != null && cardAt(b) != null)
                     {
-                        replaceSelectedCards(cards);
-                        return true;
+                        List<Integer> cards = new ArrayList<Integer>();
+                        List<Integer> check = new ArrayList<Integer>();
+                        check.add(cardAt(a).pointValue());
+                        cards.add(a);
+                        check.add(cardAt(b).pointValue());
+                        cards.add(b);
+                        if(containsPairSum11(check))
+                        {
+                            replaceSelectedCards(cards);
+                            return true;
+                        }
                     }
                 }
             }
@@ -80,20 +83,23 @@ public class ElevensBoardAuto extends Board
             boolean k = false;
             while(cards.size() < 3)
             {
-                if(!j && cardAt(i).pointValue() == 11)
+                if(cardAt(i) != null)
                 {
-                    j = true;
-                    cards.add(i);
-                }
-                if(!q && cardAt(i).pointValue() == 12)
-                {
-                    q = true;
-                    cards.add(i);
-                }
-                if(!k && cardAt(i).pointValue() == 13)
-                {
-                    k = true;
-                    cards.add(i);
+                    if(!j && cardAt(i).pointValue() == 11)
+                    {
+                        j = true;
+                        cards.add(i);
+                    }
+                    if(!q && cardAt(i).pointValue() == 12)
+                    {
+                        q = true;
+                        cards.add(i);
+                    }
+                    if(!k && cardAt(i).pointValue() == 13)
+                    {
+                        k = true;
+                        cards.add(i);
+                    }
                 }
                 i++;
             }
@@ -140,16 +146,22 @@ public class ElevensBoardAuto extends Board
         {
             for(int b = 0; b < BOARD_SIZE; b++)
             {
-                List<Integer> selectedCards = new ArrayList<Integer>();
-                selectedCards.add(cardAt(a).pointValue());
-                selectedCards.add(cardAt(b).pointValue());
-                if(containsPairSum11(selectedCards))
-                    return true;
+                if(cardAt(a) != null && cardAt(b) != null)
+                {
+                    List<Integer> selectedCards = new ArrayList<Integer>();
+                    selectedCards.add(cardAt(a).pointValue());
+                    selectedCards.add(cardAt(b).pointValue());
+                    if(containsPairSum11(selectedCards))
+                        return true;
+                }
             }
         }
         List<Integer> cards = new ArrayList<Integer>();
         for(int i = 0; i < size(); i++)
-            cards.add(cardAt(i).pointValue());
+        {
+            if(cardAt(i) != null)
+                cards.add(cardAt(i).pointValue());
+        }
         return cards.contains(11) && cards.contains(12) && cards.contains(13);
     } // anotherPlayIsPossible()
 
@@ -163,7 +175,7 @@ public class ElevensBoardAuto extends Board
      */
     private boolean containsPairSum11(List<Integer> values)
     {
-        if(values.size() == 2)
+        if(values.size() == 2 && values.get(0) != null && values.get(1) != null)
         {
             return values.get(0) + values.get(1) == 11;
         }

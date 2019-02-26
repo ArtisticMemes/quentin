@@ -49,7 +49,7 @@ public class Deck
      */
     public boolean isEmpty()
     {
-        return size == 0;
+        return size <= 0;
     } // isEmpty()
 
     /**
